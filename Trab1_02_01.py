@@ -31,6 +31,6 @@ pl.xlabel("Tempo(semanas)")
 pl.ylabel("Empresas em cada mercado")
 pl.title("Mercados ao longo da semana")
 pl.grid()
-pl.legend(loc='upper right')
+pl.legend(bbox_to_anchor=(1.05,1),loc=2,borderaxespad=0)
 pl.show()
     
