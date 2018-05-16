@@ -6,7 +6,6 @@ Created on Mon May 14 13:09:15 2018
 @author: pedrohen/lucasmullers
 """
 
-import numpy as np
 import pylab as pl
 
 def f(r,k):
@@ -25,7 +24,8 @@ while r < 1500:
     dias_vec.append(numDias)
     numDias = numDias + 1
 
-pl.plot(dias_vec,r_vec,'-' 'o',label = "Grafico 1")
+pl.plot(dias_vec,r_vec,'-' 'o')
+pl.title("Difusão do boato k= "+str(0.0012))
 pl.grid()
 pl.xlabel("Tempo (dias)")
 pl.ylabel("Boatos (pessoas que sabem)")

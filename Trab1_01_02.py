@@ -3,10 +3,9 @@
 """
 Created on Mon May 14 13:16:21 2018
 
-@author: pedrohen
+@author: pedrohen/lucasmullers
 """
 
-import numpy as np
 import pylab as pl
 
 def f(r,k):
@@ -26,7 +25,8 @@ for i in range(4): # Tamanho de k
         r = f(r,k[i])
         r_vec.append(r)
         dias_vec.append(numDias)
-    pl.plot(dias_vec,r_vec,'-' 'o',label = "Grafico {}".format(i+1))
+    pl.plot(dias_vec,r_vec,'-' 'o')
+    pl.title("Dispersão do boato com k="+str(k[i]))
     pl.grid()
     
     pl.xlabel("Tempo (dias)")

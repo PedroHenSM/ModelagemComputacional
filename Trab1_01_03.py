@@ -6,7 +6,6 @@ Created on Mon May 14 13:28:25 2018
 @author: pedrohen
 """
 
-import numpy as np
 import pylab as pl
 
 def f(r,k,d): # Funcao que controla a taxa de crescimento do boato 
@@ -25,7 +24,8 @@ for numDias in range(90):
     r_vec.append(r)
     dias_vec.append(numDias)
 
-pl.plot(dias_vec,r_vec,'-' 'o',label = "Grafico")
+pl.plot(dias_vec,r_vec,'-''o')
+pl.title("Dispersão do boato com fator de esquecimento")
 pl.grid()
 pl.xlabel("Tempo (dias)")
 pl.ylabel("Boatos (pessoas que sabem)")
