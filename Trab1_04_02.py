@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Mon May 21 12:24:58 2018
+Created on Mon May 21 14:11:49 2018
 
 @author: lucasmullers
 """
@@ -20,7 +20,7 @@ for i in range(len(casos)):
     cn.append(c[i])
     tempo.append(0)
     for j in range(120):
-        rn.append(1.2*r[i] - 0.001*r[i]*c[i])
+        rn.append(1.1*r[i] - 0.001*r[i]*c[i])
         cn.append(0.7*c[i] + 0.002*r[i]*c[i])
         r[i] = rn[j+1]
         c[i] = cn[j+1]
@@ -33,10 +33,4 @@ for i in range(len(casos)):
     pl.ylabel("Variação ratos/corujas")
     pl.grid()
     pl.legend()
-    pl.show()   
-    
-'''
-O modelo não é sensível aos valores inicias, já que o número de corujas sempre diminui
-até chegar a 0 e o número de ratos sempre aumenta
-com 1.1 na primeira equacao o modelo se torna sensivel
-'''
+    pl.show()  
