@@ -28,18 +28,21 @@ for i in range(4):
     pn = []
     qn = []
     pl.figure()
+    pn.append(p[i])
+    qn.append(q[i])
+    tempo.append(0)
     for j in range(50):
         pn.append(p[i] - 0.1*(q[i] - 500))
         qn.append(q[i] + 0.2*(p[i] - 100))
-        tempo.append(j)
-        p[i] = pn[j]
-        q[i] = qn[j]
+        tempo.append(j+1)
+        p[i] = pn[j+1]
+        q[i] = qn[j+1]
         
     pl.title("Caso "+str(casos[i]))
     pl.plot(tempo, pn, '-', label="Preco Produto")
     pl.plot(tempo, qn, '-', label="Quantidade")
     pl.xlabel("Tempo(Meses)")
-    pl.ylabel("Variação demanda/preço")
+    pl.ylabel("Variação oferta/preço")
     pl.grid()
     pl.legend()
     pl.show()        
