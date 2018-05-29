@@ -24,7 +24,7 @@ for numDias in range(90):
     r_vec.append(r)
     dias_vec.append(numDias)
 
-pl.plot(dias_vec,r_vec,'-''o')
+pl.plot(dias_vec,r_vec,'-')
 pl.title("Dispersão do boato com fator de esquecimento")
 pl.grid()
 pl.xlabel("Tempo (dias)")

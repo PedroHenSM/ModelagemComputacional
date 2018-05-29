@@ -21,14 +21,17 @@ for i in range(4): # Tamanho de k
     r_vec = []
     dias_vec = []
     r = 4
-    for numDias in range(1,8): # Uma semana
+    r_vec.append(r)
+    dias_vec.append(0)
+    for numDias in range(1,90): # Uma semana
         r = f(r,k[i])
         r_vec.append(r)
         dias_vec.append(numDias)
-    pl.plot(dias_vec,r_vec,'-' 'o')
+    pl.plot(dias_vec,r_vec,'-')
     pl.title("Dispersão do boato com k="+str(k[i]))
     pl.grid()
     
+    pl.ylim((0,6000))
     pl.xlabel("Tempo (dias)")
     pl.ylabel("Boatos (pessoas que sabem)")
     pl.legend()
