@@ -3,7 +3,7 @@
 """
 Created on Mon May 14 13:28:25 2018
 
-@author: pedrohen
+@author: pedrohen/lucasmullers
 """
 
 import pylab as pl
@@ -14,7 +14,7 @@ def f(r,k,d): # Funcao que controla a taxa de crescimento do boato
 k  = 0.0012
 r = 4
 
-e = 0.025 # Ajustar depois, fator esquecimento que depende de D(dias)
+e = 0.025
 
 r_vec = []
 dias_vec = []

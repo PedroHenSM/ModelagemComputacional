@@ -14,16 +14,13 @@ def f(r,k):
 k = [0.25, 0.025, 0.0025, 0.00025]
 r = 4
 
-
-
-
 for i in range(4): # Tamanho de k 
     r_vec = []
     dias_vec = []
     r = 4
     r_vec.append(r)
     dias_vec.append(0)
-    for numDias in range(1,90): # Uma semana
+    for numDias in range(1,8): # Uma semana
         r = f(r,k[i])
         r_vec.append(r)
         dias_vec.append(numDias)
@@ -37,7 +34,3 @@ for i in range(4): # Tamanho de k
     pl.legend()
     pl.show()
     pl.figure()    
-
-
-
-#pl.show()

@@ -20,7 +20,6 @@ numDias = 0
 while r < 1500:
     r = f(r,k)
     r_vec.append(r)
-    #r = f(r,k)
     dias_vec.append(numDias)
     numDias = numDias + 1
 

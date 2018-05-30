@@ -1,17 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Wed May 16 16:32:14 2018
-
-@author: lucasmullers
-"""
-
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
 Created on Tue May 15 18:36:02 2018
 
-@author: root
+@author: pedrohen/lucasmullers
 """
 
 import pylab as pl
