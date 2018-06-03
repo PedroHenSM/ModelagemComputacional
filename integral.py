@@ -1,10 +1,7 @@
 #!/usr/bin/python
 # encoding: utf-8
-
-
-from numpy import *
-from matplotlib import *
-from matplotlib.pyplot import *
+import numpy as np
+import pylab as pl
 import scipy.integrate
 
 # escolha do parametro beta
@@ -12,44 +9,43 @@ def analisa_exponencial():
   
   n=int(1e5)
   
-  subplot(221)
+  pl.subplot(221)
   beta=0.5
-  x=numpy.random.exponential(beta, n)
-  hist(x, 50, normed=0, facecolor='green', alpha=0.75)
-  title(r'$\mathrm{Dist. exponencial:}\ \beta=$%s'%beta)
+  x=np.random.exponential(beta, n)
+  pl.hist(x, 50, normed=0, facecolor='green', alpha=0.75)
+  pl.title(r'$\mathrm{Dist. exponencial:}\ \beta=$%s'%beta)
   
-  subplot(222)
+  pl.subplot(222)
   beta=0.2
-  x=numpy.random.exponential(beta, n)
-  hist(x, 50, normed=0, facecolor='green', alpha=0.75)
-  title(r'$\mathrm{Dist. exponencial:}\ \beta=$%s'%beta)
-  subplot(223)
+  x=np.random.exponential(beta, n)
+  pl.hist(x, 50, normed=0, facecolor='green', alpha=0.75)
+  pl.title(r'$\mathrm{Dist. exponencial:}\ \beta=$%s'%beta)
+  pl.subplot(223)
   
   beta=0.1
-  x=numpy.random.exponential(beta, n)
-  hist(x, 50, normed=0, facecolor='green', alpha=0.75)
-  title(r'$\mathrm{Dist. exponencial:}\ \beta=$%s'%beta)
-  subplot(224)
+  x=np.random.exponential(beta, n)
+  pl.hist(x, 50, normed=0, facecolor='green', alpha=0.75)
+  pl.title(r'$\mathrm{Dist. exponencial:}\ \beta=$%s'%beta)
+  pl.subplot(224)
   
   beta=0.05
-  x=numpy.random.exponential(beta, n)
-  hist(x, 50, normed=0, facecolor='green', alpha=0.75)
-  title(r'$\mathrm{Dist. exponencial:}\ \beta=$%s'%beta)
-  show();
+  x=np.random.exponential(beta, n)
+  pl.hist(x, 50, normed=0, facecolor='green', alpha=0.75)
+  pl.title(r'$\mathrm{Dist. exponencial:}\ \beta=$%s'%beta)
+  pl.show();
   
   
 def fun(x):
   return (x**10)
   
 def cosxx(x):
-  return cos(x)/x
+  return np.cos(x)/x
     
-  
 def plota_funcao():
-  x=linspace(0,1,num=100)
-  plot(x,fun(x))
-  title(r'$f(x)=x^{10}-1$')
-  show()
+  x=np.linspace(0,1,num=100)
+  pl.plot(x,fun(x))
+  pl.title(r'$f(x)=x^{10}-1$')
+  pl.show()
   
 
 def montecarlo(flag, a,b,M,f,nsamples):
@@ -60,18 +56,18 @@ def montecarlo(flag, a,b,M,f,nsamples):
   beta=0.09
   
   if flag==0:
-    x=numpy.random.uniform(a,b,nsamples);
-    y=numpy.random.uniform(0,M,nsamples);
+    x=np.random.uniform(a,b,nsamples);
+    y=np.random.uniform(0,M,nsamples);
     print ('\nMonte Carlo convencional: geração dos números aleatórios: x(uniforme), y(uniforme) \n')
     
   if flag==1:
-    x=1-numpy.random.exponential(beta,nsamples); x[where(x<0)]=0
-    y=numpy.random.uniform(0,M,nsamples);
+    x=1-np.random.exponential(beta,nsamples); x[np.where(x<0)]=0
+    y=np.random.uniform(0,M,nsamples);
     print ('\nMonte Carlo convencional: geração dos números aleatórios: x(exponencial), y(uniforme) \n')
   
   if flag==2:
-    x=1-numpy.random.exponential(beta,nsamples); x[where(x<0)]=0
-    y=numpy.random.exponential(beta,nsamples); y[where(y>M)]=M
+    x=1-np.random.exponential(beta,nsamples); x[np.where(x<0)]=0
+    y=np.random.exponential(beta,nsamples); y[np.where(y>M)]=M
     print ('\nMonte Carlo convencional: geração dos números aleatórios: x(exponencial), y(exponencial) \n')
   
   
