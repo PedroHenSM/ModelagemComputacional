@@ -20,9 +20,9 @@ def solidoB(x,y):
 interno = 0
 iteracoes = 1000000
 for i in range(iteracoes):
-    x = random.uniform(0, np.sqrt(8))
-    y = random.uniform(0, np.sqrt(8/3))
-    z = random.uniform(0, 8)
+    x = random.rand()*np.sqrt(8)
+    y = random.rand()*np.sqrt(8/3)
+    z = random.rand()*8
 
     if z <= solidoA(x,y) and z <= solidoB(x,y):
         interno+=1     
