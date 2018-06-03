@@ -25,8 +25,8 @@ for i in range(iteracoes):
     z = random.rand()*8
 
     if z <= solidoA(x,y) and z <= solidoB(x,y):
-        interno+=1     
+        interno+=1.  
        
-volume = 4*8*np.sqrt(8)*np.sqrt(8/3)*(interno/iteracoes)
+volume = 4.*8.*np.sqrt(8.)*np.sqrt(8./3.)*(interno/iteracoes)
 
 print("Volume = " + str(volume))

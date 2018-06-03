@@ -20,13 +20,13 @@ def solidoB(x,y):
 interno = 0
 iteracoes = 1000000
 for i in range(iteracoes):
-    x = random.uniform(0, np.sqrt(8))
-    y = random.uniform(0, np.sqrt(8))
-    z = random.uniform(0, 8)
+    x = random.uniform(0, np.sqrt(8.))
+    y = random.uniform(0, np.sqrt(8.))
+    z = random.uniform(0, 8.)
 
     if z <= solidoA(x,y) and z <= solidoB(x,y):
-        interno+=1     
+        interno+=1.   
        
-volume = 4*8*np.sqrt(8)*np.sqrt(8)*(interno/iteracoes)
+volume = 4.*8.*np.sqrt(8.)*np.sqrt(8.)*(interno/iteracoes)
 
 print("Volume = " + str(volume))
