@@ -22,13 +22,16 @@ def deslocamento(P,D,d,alfa,E,G,n):
     
     return term1 * (2 * term2 + term3)
     
+def calculaTensaoLimite(normal,cisalhante):
+    return np.sqrt(np.power(normal,2)+4*np.power(cisalhante,2))
 
 tensaoNormal = []
 tensaoCisalhante = []
-coefRigidez = [] # F = kx --> k = F/x
+tensaoLimite = []
+falhou = 0
+numVezes = 10000
 
-
-for i in range (10000):
+for i in range (numVezes):
     #np.random.seed(i)
     D = np.random.uniform(77,83) * (10**(-3))
     d = np.random.uniform(19,21) * (10**(-3))
@@ -36,48 +39,35 @@ for i in range (10000):
     n = 10
     E = np.random.uniform(197,203) * (10**(9))
     G = np.random.uniform(79,81) * (10**(9))
-    P = 12*10**3
+    P = 10.2*10**3
     tensaoNormal.append(funcaoNormal(P,D,d,alfa))
     tensaoCisalhante.append(funcaoCisalhante(P,D,d,alfa))
-    coefRigidez.append(P / deslocamento(P,D,d,alfa,E,G,n))
+    tensaoLimite.append(calculaTensaoLimite(tensaoNormal[i],tensaoCisalhante[i]))
+    if (tensaoLimite[i] > 600 * 10**6):
+        falhou = falhou + 1
+        
+pl.hist(tensaoLimite,color = 'blue',edgecolor='black', linewidth=1,bins = 50)
+pl.title("Histograma da Tensao Limite")
+pl.axvline(x = 600 * 10**6,color = 'red',linestyle = 'dashed')
+pl.xlabel ("Valor da tensão Limite (N)")
+pl.ylabel("Frequência")
+pl.figure()
+
+legendas = ["Falhou","Resistiu"]
+pedacos = [falhou,numVezes-falhou]
+cores = ['red','lightskyblue']
+explode = (0.1,0)
+pl.pie(pedacos,explode = explode,colors=cores,autopct='%1.1f%%',shadow = True, startangle = 0) #'''startangle = 90''')
+pl.title("Eficiência da Mola")
+pl.axis('equal')
+pl.legend(legendas,loc = 'best')
+pl.show()
+
+        
+
+        
     
 
-
-#fig = pl.figure(1, figsize=(9, 6))
-#ax = fig.add_subplot(111)
-
-pl.hist(tensaoNormal,color = 'blue',edgecolor='black', linewidth=1,bins = 50)
-pl.title("Histograma da Tensao Normal")
-pl.xlabel ("Valor da tensão Normal (N)")
-pl.ylabel("Frequência")
-pl.figure()
-
-pl.hist(tensaoCisalhante,color = 'blue',edgecolor='black', linewidth=1,bins = 50)
-pl.title("Histograma da Tensão Cisalhante")
-pl.xlabel ("Valor da tensão Cisalhante (N)")
-pl.ylabel("Frequência")
-pl.figure()
-
-pl.hist(coefRigidez,color = 'blue',edgecolor='black', linewidth=1,bins = 50)
-pl.title("Histograma do Coeficiente de Rigidez")
-pl.xlabel ("Valor do Coeficiente de Rigidez (N)")
-pl.ylabel("Frequência")
-pl.figure()
-
-
-dados = []
-dados.append(tensaoNormal)
-dados.append(tensaoCisalhante)
-
-
-bp0 = pl.boxplot(dados,1,patch_artist = True)
-
-pl.xticks([1,2],['Tensão Normal', 'Tensão Cisalhante'])
-pl.show()
-pl.figure()
-
-bp1 = pl.boxplot(coefRigidez,1, patch_artist = True)
-pl.xticks([1],['Coeficiente de Rigidez'])
 
 
 
