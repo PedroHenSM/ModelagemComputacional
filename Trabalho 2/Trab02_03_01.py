@@ -8,10 +8,10 @@ import numpy as np
 import pylab as pl
 
 def funcaoNormal(P,D,d,alfa):
-    return (16*P*D*(1 + d/(4*D))*np.sin(alfa))/(np.pi*d**3)
+    return (16*P*D*(1 + d/(4*D))*np.sin(alfa))/(np.pi*(d**3))
 
 def funcaoCisalhante(P,D,d,alfa):
-    return (8*P*D*(1 + d/(2*D))*np.cos(alfa))/(np.pi*d**3)
+    return (8*P*D*(1 + d/(2*D))*np.cos(alfa))/(np.pi*(d**3))
 
 def deslocamento(P,D,d,alfa,E,G,n):
     #return ((8*P*(D**3)*n)/((d**4)*np.cos(alfa))) * (2*((1+(d**2)/(4*(D**2)))*np.sin(alfa)*np.sin(alfa)/E)+(1+(d**2)/(2*(D**2)))*np.cos(alfa)*np.cos(alfa)/E*G)
@@ -32,7 +32,7 @@ for i in range (10000):
     #np.random.seed(i)
     D = np.random.uniform(77,83) * (10**(-3))
     d = np.random.uniform(19,21) * (10**(-3))
-    alfa = np.random.uniform(13,17)
+    alfa = np.deg2rad(np.random.uniform(13,17))
     n = 10
     E = np.random.uniform(197,203) * (10**(9))
     G = np.random.uniform(79,81) * (10**(9))
@@ -69,14 +69,18 @@ dados = []
 dados.append(tensaoNormal)
 dados.append(tensaoCisalhante)
 
+boxprops = dict(linestyle='-',linewidth=2,color='blue')
+medianprops = dict(linestyle='-',linewidth=2,color='red')
+meanprops=dict(marker='+', markerfacecolor='black', markeredgecolor='black')
 
-bp0 = pl.boxplot(dados,1,patch_artist = True)
 
+#bp0 = pl.boxplot(dados,1,patch_artist = False,showmeans=True)
+bp0 = pl.boxplot(dados,showmeans=True,meanprops=meanprops,boxprops=boxprops,medianprops=medianprops)
 pl.xticks([1,2],['Tensão Normal', 'Tensão Cisalhante'])
 pl.show()
 pl.figure()
 
-bp1 = pl.boxplot(coefRigidez,1, patch_artist = True)
+bp0 = pl.boxplot(coefRigidez,showmeans=True,meanprops=meanprops,boxprops=boxprops,medianprops=medianprops)
 pl.xticks([1],['Coeficiente de Rigidez'])
 
 

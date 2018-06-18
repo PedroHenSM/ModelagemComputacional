@@ -29,13 +29,13 @@ tensaoNormal = []
 tensaoCisalhante = []
 tensaoLimite = []
 falhou = 0
-numVezes = 10000
+numVezes = 100000
 
 for i in range (numVezes):
     #np.random.seed(i)
     D = np.random.uniform(77,83) * (10**(-3))
     d = np.random.uniform(19,21) * (10**(-3))
-    alfa = np.random.uniform(13,17)
+    alfa = np.deg2rad(np.random.uniform(13,17))
     n = 10
     E = np.random.uniform(197,203) * (10**(9))
     G = np.random.uniform(79,81) * (10**(9))
@@ -44,12 +44,12 @@ for i in range (numVezes):
     tensaoCisalhante.append(funcaoCisalhante(P,D,d,alfa))
     tensaoLimite.append(calculaTensaoLimite(tensaoNormal[i],tensaoCisalhante[i]))
     if (tensaoLimite[i] > 600 * 10**6):
-        falhou = falhou + 1
+        falhou += 1
         
 pl.hist(tensaoLimite,color = 'blue',edgecolor='black', linewidth=1,bins = 50)
 pl.title("Histograma da Tensao Limite")
 pl.axvline(x = 600 * 10**6,color = 'red',linestyle = 'dashed')
-pl.xlabel ("Valor da tensão Limite (N)")
+pl.xlabel ("Valor da tensão calculada (N)")
 pl.ylabel("Frequência")
 pl.figure()
 
