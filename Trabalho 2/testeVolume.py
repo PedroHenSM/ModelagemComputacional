@@ -8,7 +8,6 @@ Created on Sun Jun  3 16:15:31 2018
 
 #https://www.tutorbrasil.com.br/forum/viewtopic.php?t=36000
 
-from numpy import random
 import numpy as np
 
 def solidoA(x,y):    
@@ -20,13 +19,13 @@ def solidoB(x,y):
 interno = 0
 iteracoes = 1000000
 for i in range(iteracoes):
-    x = random.uniform(0, np.sqrt(8.))
-    y = random.uniform(0, np.sqrt(8.))
-    z = random.uniform(0, 8.)
+    x = np.random.uniform(0, 8)
+    y = np.random.uniform(0, 8)
+    z = np.random.uniform(0, 8)
 
     if z <= solidoA(x,y) and z <= solidoB(x,y):
         interno+=1.   
        
-volume = 4.*8.*np.sqrt(8.)*np.sqrt(8.)*(interno/iteracoes)
+volume = 4.*8.*8.*8.*(interno/iteracoes)
 
 print("Volume = " + str(volume))
