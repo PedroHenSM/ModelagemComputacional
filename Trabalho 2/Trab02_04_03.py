@@ -19,7 +19,11 @@ def tensaoCisalhamento(P,omega,b,x,Eo,to,Ei,ti,alfao,alfai,T,l):
     
     return primeiroTermo + (segundoTermo + terceiroTermo)*np.sinh(np.deg2rad(omega*x))
 
-for j in range(10):
+
+minimo = 1000000
+maximo = 0
+vetor = []
+for j in range(80):
     G = np.random.uniform(0.2 *(10**6)*0.95, 0.2 *(10**6)*1.05)
     Eo = np.random.uniform(10*(10**6)*0.95, 10*(10**6)*1.05)
     Ei = np.random.uniform(30*(10**6)*0.95, 30*(10**6)*1.05)
@@ -38,9 +42,17 @@ for j in range(10):
     
     for xi in x:
         tensoes.append(tensaoCisalhamento(P,omegaVal,b,xi,Eo,to,Ei,ti,alfao,alfai,T,l))
+    vetor.append(tensoes)
+    if min(tensoes) < minimo:
+        minimo = min(tensoes)
+    if max(tensoes) > maximo:
+        maximo = max(tensoes)
     pl.plot(x,tensoes)
     pl.grid()
     pl.title("Tensão cisalhante por distância")
     pl.xlabel("Distância (in)")
     pl.ylabel("Tensão cisalhante (lbf/in²)")
-    pl.show()
+pl.show()
+pl.figure()
+pl.boxplot(vetor)
+print("valor mínimo:" + str(minimo) + "\nvalor máximo: " + str(maximo))

@@ -6,27 +6,29 @@ Created on Sun Jun  3 15:05:37 2018
 @author: lucasmullers
 """
 
-from numpy import random
 import numpy as np
 
 #Cálculo de volume entre dois sólidos usando Monte Carlo
 
 def solidoA(x,y):    
-    return 8 - x**2 - y**2
+    return 8 - np.power(x,2) - np.power(y,2)
 def solidoB(x,y):
-    return x**2 + 3*y**2
+    return np.power(x,2) + 3*np.power(y,2)
 
 
-interno = 0
 iteracoes = 1000000
-for i in range(iteracoes):
-    x = random.rand()*np.sqrt(8)
-    y = random.rand()*np.sqrt(8/3)
-    z = random.rand()*8
-
-    if z <= solidoA(x,y) and z <= solidoB(x,y):
-        interno+=1.  
-       
-volume = 4.*8.*np.sqrt(8.)*np.sqrt(8./3.)*(interno/iteracoes)
-
-print("Volume = " + str(volume))
+volume = []
+for k in range(100):
+    interno = 0
+    print(k)
+    for i in range(iteracoes):
+        x = np.random.uniform(0, 8)
+        y = np.random.uniform(0, 8)
+        z = np.random.uniform(0, 8)
+    
+        if z <= solidoA(x,y) and z <= solidoB(x,y):
+            interno+=1.
+           
+    volume.append(4.*8.*8.*8.*(interno/iteracoes))
+    
+print("Volume = " + str(sum(volume)/len(volume)))
