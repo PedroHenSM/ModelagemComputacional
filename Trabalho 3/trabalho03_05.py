@@ -9,7 +9,6 @@ Created on Wed Jul  4 11:14:44 2018
 import numpy as np
 import matplotlib.pyplot as pl
 import string
-import sys
 
 
 np.random.seed()

@@ -47,7 +47,7 @@ for a in range(len(N)):
         print(sorted(L.items(), key=operator.itemgetter(1),reverse=True)) # Imprime dicionario
         x = np.array(range(len(z)))
         pl.bar(tipoLetra[arg],z[arg])
-        pl.xticks(x,tipoLetra[arg]) # Coloca as letras no eixo X ( o nome) | Apenas estética
+        pl.xticks(x,tipoLetra[arg], rotation='vertical') # Coloca as letras no eixo X ( o nome) | Apenas estética
         pl.title("Porcentagem de letras ao fim do experimento: N: {} k:{}".format(numLetras,k))
         pl.xlabel('Letras')
         pl.ylabel('Frequência')
