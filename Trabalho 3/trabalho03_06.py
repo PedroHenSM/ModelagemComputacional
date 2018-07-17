@@ -25,7 +25,6 @@ for a in range(len(N)):
         qtdInovacoes = 1 # Inovacoes que serão geradas (novas cores que serão geradas)
         escolhidos = []
         for i in range(numLetras): # Preenche urna
-            #l = letras[nLetras-i-1]
             l = letras[i]
             U += [l]*r
 
