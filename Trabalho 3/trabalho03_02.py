@@ -42,7 +42,7 @@ for a in range(len(N)):
         tipoLetra,qtd = np.unique(U, return_counts = True)
         L = dict(zip(tipoLetra,qtd)) # Dicionário com letras e quantidade
         z = 1.0*qtd/len(U) # Vetor com a porcentagem de cada letra ao fim da urna
-        arg = np.argsort(z) # Returns the indices that would sort an array.
+        arg = np.argsort(z)
         arg = arg[::-1] # Inverte a ordem do vetor arg
         print(sorted(L.items(), key=operator.itemgetter(1),reverse=True)) # Imprime dicionario
         
@@ -53,8 +53,7 @@ for a in range(len(N)):
         pl.xlabel('Letras')
         pl.ylabel('Frequência')
         pl.show()
-        #pl.semilogx(tipoLetra,z[arg]) # lw = linewidth
-        #pl.show()
+        
         
         cc=np.polyfit(x=x,y=np.log(z[arg]),deg=1) # "Cria" polinomio de grau 1
         p = np.poly1d(cc) # Converte 'cc' para uma reta do tipo y=ax+b
@@ -66,9 +65,3 @@ for a in range(len(N)):
         pl.show()
         print(p)
         print(p[1]) # Coeficiente angular da reta y=ax+b
-        
-        ''' 
-        Normalmente Quanto menor o fator N/k, maior a disparidade(desvio padrao) de cores.
-        ou seja, poucos com muito e muitos com pouco, portanto a inclinação da
-        reta deve ser maior, indicando um coeficiente angular maior
-        '''

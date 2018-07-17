@@ -13,7 +13,7 @@ import operator
 
 
 np.random.seed(1)
-r = 2 # Quantidade inicial de letras no inicio da urna
+r = 1 # Quantidade inicial de letras no inicio da urna
 numEventos = 10000
 
 
@@ -55,7 +55,7 @@ for a in range(len(N)):
         tipoLetra1,qtd1 = np.unique(U1, return_counts = True)
         L1 = dict(zip(tipoLetra1,qtd1)) # Dicionário com letras e quantidade
         z1 = 1.0*qtd1/len(U1) # Vetor com a porcentagem de cada letra ao fim da urna
-        arg1 = np.argsort(z1) # Returns the indices that would sort an array.
+        arg1 = np.argsort(z1)
         arg1 = arg1[::-1] # Inverte a ordem do vetor arg
         print(sorted(L1.items(), key=operator.itemgetter(1),reverse=True)) # Imprime dicionario
         
@@ -63,7 +63,7 @@ for a in range(len(N)):
         tipoLetra2,qtd2 = np.unique(U2, return_counts = True)
         L2 = dict(zip(tipoLetra2,qtd2)) # Dicionário com letras e quantidade
         z2 = 1.0*qtd2/len(U2) # Vetor com a porcentagem de cada letra ao fim da urna
-        arg2 = np.argsort(z2) # Returns the indices that would sort an array.
+        arg2 = np.argsort(z2) 
         arg2 = arg2[::-1] # Inverte a ordem do vetor arg
         print(sorted(L2.items(), key=operator.itemgetter(1),reverse=True)) # Imprime dicionario
         

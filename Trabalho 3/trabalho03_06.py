@@ -22,7 +22,7 @@ for a in range(len(N)):
         letras = [string.ascii_uppercase[i] for i in range(numLetras)]
         k = K[b] # Numero de copias da bola que será retirada
         U = [] # Urna
-        qtdInovacoes = 1 # Inovacoes que serão geradas (novas cores que serão geradas)
+        Q = 1  # Quantidade de inovacoes que serão geradas. Novas cores(letras) que serão geradas
         escolhidos = []
         for i in range(numLetras): # Preenche urna
             l = letras[i]
@@ -31,22 +31,20 @@ for a in range(len(N)):
         for i in range(numEventos):
             idxEscolhido = np.random.choice(len(U))
             if(not(U[idxEscolhido] in escolhidos)): # Verifica se a letra já foi escolhida
-                U += [U[idxEscolhido] + ("%d"%i) for i in range(qtdInovacoes)] # Adiciona novas letras a Urna
+                U += [U[idxEscolhido] + ("%d"%i) for i in range(Q)] # Adiciona novas letras a Urna
                 escolhidos.append(U[idxEscolhido]) # Adiciona a escolhidos a letra escolhida
             U += [U[idxEscolhido]]*k # Cria k copias da letra e adiciona a urna
             
         tipoLetra,qtd = np.unique(U, return_counts = True)
         L = dict(zip(tipoLetra,qtd)) # Dicionário com letras e quantidade
-        print(L)
-        print(len(U))
         z = 1.0*qtd/len(U) # Vetor com a porcentagem de cada letra ao fim da urna
-        arg = np.argsort(z) # Returns the indices that would sort an array.
+        arg = np.argsort(z) 
         arg = arg[::-1] # Inverte a ordem do vetor arg
-        
         print(sorted(L.items(), key=operator.itemgetter(1),reverse=True)) # Imprime dicionario
+        
         x = np.array(range(len(z)))
         pl.bar(tipoLetra[arg],z[arg])
-        pl.xticks(x,tipoLetra[arg]) # Coloca as letras no eixo X ( o nome) | Apenas estética
+        pl.xticks(x,tipoLetra[arg], rotation='vertical') # Coloca as letras no eixo X (o nome)
         pl.title("Porcentagem de letras ao fim do experimento: N: {} k:{}".format(numLetras,k))
         pl.xlabel('Letras')
         pl.ylabel('Frequência')
